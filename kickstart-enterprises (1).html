@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kickstart Enterprises — Delivering Goods. Seamlessly.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --maroon:#6B1530;
+    --maroon-deep:#4A0E21;
+    --gold:#C9A227;
+    --gold-bright:#E3C158;
+    --cream:#F7F3EC;
+    --paper:#FBF8F2;
+    --ink:#231A1B;
+    --stone:#8A8580;
+    --stone-light:#C9C2B8;
+    --line:rgba(35,26,27,0.10);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,.serif{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+
+  a{color:inherit;text-decoration:none;}
+
+  img{max-width:100%;display:block;}
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- Focus ---------- */
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+  }
+
+  /* ---------- Reduced motion ---------- */
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    background:rgba(247,243,236,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    max-width:1180px;
+    margin:0 auto;
+    padding:18px 32px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    font-size:19px;
+    letter-spacing:-0.01em;
+  }
+  .brand .mark{
+    width:11px;height:11px;
+    background:var(--gold);
+    border-radius:1px;
+    transform:rotate(45deg);
+    flex-shrink:0;
+  }
+  nav ul{
+    display:flex;
+    gap:36px;
+    list-style:none;
+  }
+  nav ul a{
+    font-size:14.5px;
+    font-weight:500;
+    color:var(--ink);
+    position:relative;
+    padding-bottom:4px;
+  }
+  nav ul a::after{
+    content:'';
+    position:absolute;
+    bottom:0; left:0;
+    width:0; height:1.5px;
+    background:var(--gold);
+    transition:width 0.25s ease;
+  }
+  nav ul a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--maroon);
+    color:var(--paper);
+    padding:10px 22px;
+    border-radius:3px;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:0.01em;
+    transition:background 0.25s ease;
+  }
+  .nav-cta:hover{background:var(--maroon-deep);}
+  .nav-toggle{display:none;}
+
+  @media (max-width:840px){
+    nav ul{display:none;}
+    .nav-cta{padding:9px 16px; font-size:13px;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:168px 0 120px;
+    background:
+      radial-gradient(ellipse 900px 500px at 85% -10%, rgba(201,162,39,0.10), transparent 60%),
+      linear-gradient(180deg, var(--cream) 0%, var(--paper) 100%);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:64px;
+    align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--maroon);
+    margin-bottom:26px;
+  }
+  .eyebrow .dash{
+    width:22px; height:1.5px;
+    background:var(--gold);
+  }
+  .hero h1{
+    font-size:54px;
+    line-height:1.08;
+    color:var(--ink);
+    margin-bottom:24px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:500;
+    color:var(--maroon);
+  }
+  .hero p.lead{
+    font-size:18px;
+    color:#4A4040;
+    max-width:480px;
+    margin-bottom:38px;
+  }
+  .hero-ctas{
+    display:flex;
+    gap:16px;
+    margin-bottom:54px;
+    flex-wrap:wrap;
+  }
+  .btn-primary{
+    background:var(--maroon);
+    color:var(--paper);
+    padding:15px 28px;
+    border-radius:3px;
+    font-weight:600;
+    font-size:15px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:background 0.25s ease, transform 0.25s ease;
+  }
+  .btn-primary:hover{background:var(--maroon-deep); transform:translateY(-1px);}
+  .btn-secondary{
+    border:1.5px solid var(--ink);
+    color:var(--ink);
+    padding:14px 26px;
+    border-radius:3px;
+    font-weight:600;
+    font-size:15px;
+    transition:border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+  }
+  .btn-secondary:hover{background:var(--ink); color:var(--paper);}
+
+  .hero-stats{
+    display:flex;
+    gap:40px;
+  }
+  .stat .num{
+    font-family:'Fraunces',serif;
+    font-size:30px;
+    font-weight:600;
+    color:var(--maroon);
+    line-height:1;
+  }
+  .stat .label{
+    font-size:13px;
+    color:var(--stone);
+    margin-top:6px;
+  }
+
+  /* ---------- Hero card visual ---------- */
+  .card-stage{
+    position:relative;
+    height:480px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .marble-bg{
+    position:absolute;
+    top:0; left:50%;
+    transform:translateX(-50%);
+    width:120%;
+    height:62%;
+    background:
+      repeating-linear-gradient(115deg, transparent 0 40px, rgba(35,26,27,0.035) 40px 41px, transparent 41px 90px),
+      linear-gradient(135deg, #E7E2D8 0%, #F2EFE8 45%, #E2DDD2 100%);
+    border-radius:2px;
+  }
+  .gold-vein{
+    position:absolute;
+    top:14%;
+    left:-5%;
+    width:110%;
+    height:6px;
+    background:linear-gradient(90deg, transparent, var(--gold-bright) 20%, var(--gold) 50%, var(--gold-bright) 80%, transparent);
+    transform:rotate(-3deg);
+    opacity:0.85;
+    filter:blur(0.3px);
+  }
+  .biz-card{
+    position:relative;
+    width:380px;
+    max-width:88%;
+    background:linear-gradient(155deg, var(--maroon) 0%, var(--maroon-deep) 100%);
+    border-radius:4px;
+    padding:38px 34px 32px;
+    box-shadow:0 30px 60px -20px rgba(74,14,33,0.45), 0 10px 24px -8px rgba(35,26,27,0.25);
+    transform:rotate(-2.5deg) translateY(70px);
+    animation:cardFloat 6s ease-in-out infinite;
+  }
+  @keyframes cardFloat{
+    0%,100%{transform:rotate(-2.5deg) translateY(70px);}
+    50%{transform:rotate(-2deg) translateY(58px);}
+  }
+  .biz-card .gold-corner{
+    position:absolute;
+    top:0; left:0;
+    width:46px; height:3px;
+    background:var(--gold);
+  }
+  .biz-card h3{
+    font-family:'Fraunces',serif;
+    color:var(--paper);
+    font-size:25px;
+    font-weight:600;
+    letter-spacing:0.01em;
+    margin-bottom:10px;
+  }
+  .biz-card p{
+    color:rgba(247,243,236,0.78);
+    font-size:14.5px;
+    font-weight:500;
+  }
+  .biz-card .corner-mark{
+    position:absolute;
+    bottom:24px; right:30px;
+    width:18px; height:18px;
+    border:1.5px solid var(--gold);
+    border-radius:1px;
+    transform:rotate(45deg);
+    opacity:0.7;
+  }
+
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero h1{font-size:42px;}
+    .card-stage{height:340px; margin-top:10px;}
+    .biz-card{transform:rotate(-2deg) translateY(40px);}
+  }
+  @media (max-width:560px){
+    .hero{padding:140px 0 80px;}
+    .hero h1{font-size:33px;}
+    .hero p.lead{font-size:16px;}
+    .hero-stats{flex-wrap:wrap; gap:28px;}
+  }
+
+  /* ---------- Section shared ---------- */
+  section{padding:108px 0;}
+  .section-head{
+    max-width:620px;
+    margin-bottom:64px;
+  }
+  .section-head .eyebrow{margin-bottom:18px;}
+  .section-head h2{
+    font-size:36px;
+    line-height:1.18;
+    color:var(--ink);
+  }
+  .section-head p{
+    margin-top:16px;
+    font-size:16.5px;
+    color:var(--stone);
+    max-width:520px;
+  }
+  .center{text-align:center; margin-left:auto; margin-right:auto;}
+
+  /* ---------- About / How it works ---------- */
+  .about{background:var(--paper);}
+  .flow{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+  }
+  .flow-step{
+    background:var(--paper);
+    padding:40px 34px;
+    position:relative;
+  }
+  .flow-step .eb{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:15px;
+    color:var(--gold);
+    margin-bottom:18px;
+    display:block;
+  }
+  .flow-step h3{
+    font-size:20px;
+    margin-bottom:10px;
+  }
+  .flow-step p{
+    font-size:14.5px;
+    color:var(--stone);
+  }
+  .flow-step:not(:last-child)::after{
+    content:'→';
+    position:absolute;
+    right:-13px; top:42px;
+    color:var(--gold);
+    font-size:18px;
+    background:var(--paper);
+    width:24px; height:24px;
+    display:flex;align-items:center;justify-content:center;
+    z-index:2;
+  }
+  @media (max-width:780px){
+    .flow{grid-template-columns:1fr;}
+    .flow-step:not(:last-child)::after{display:none;}
+  }
+
+  /* ---------- Brands ---------- */
+  .brands{background:var(--cream);}
+  .brand-list{
+    display:flex;
+    flex-direction:column;
+    gap:1px;
+  }
+  .brand-row{
+    display:grid;
+    grid-template-columns:240px 1fr;
+    gap:48px;
+    align-items:center;
+    padding:48px 0;
+    border-top:1px solid var(--line);
+  }
+  .brand-row:last-child{border-bottom:1px solid var(--line);}
+  .brand-visual{
+    position:relative;
+    height:200px;
+    border-radius:6px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .brand-visual svg{width:100%;height:100%;}
+
+  .brand-info .tag{
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:10px;
+    display:block;
+  }
+  .brand-info h3{
+    font-size:28px;
+    margin-bottom:12px;
+  }
+  .brand-info p{
+    color:var(--stone);
+    font-size:15.5px;
+    max-width:520px;
+    margin-bottom:18px;
+  }
+  .pill-row{display:flex; gap:10px; flex-wrap:wrap;}
+  .pill{
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--maroon);
+    background:rgba(107,21,48,0.07);
+    padding:7px 14px;
+    border-radius:30px;
+  }
+
+  @media (max-width:780px){
+    .brand-row{grid-template-columns:1fr; gap:24px;}
+    .brand-visual{height:170px;}
+  }
+
+  /* ---------- Why us ---------- */
+  .why{background:var(--paper);}
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:36px;
+  }
+  .why-item .icon{
+    width:46px;height:46px;
+    margin-bottom:22px;
+  }
+  .why-item h3{
+    font-size:18px;
+    margin-bottom:10px;
+  }
+  .why-item p{
+    font-size:14.5px;
+    color:var(--stone);
+  }
+  @media (max-width:900px){
+    .why-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:560px){
+    .why-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- CTA band ---------- */
+  .cta-band{
+    background:linear-gradient(135deg, var(--maroon) 0%, var(--maroon-deep) 100%);
+    padding:90px 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .cta-band::before{
+    content:'';
+    position:absolute;
+    top:18%; left:-10%;
+    width:120%; height:3px;
+    background:linear-gradient(90deg, transparent, var(--gold) 30%, var(--gold-bright) 50%, var(--gold) 70%, transparent);
+    transform:rotate(-2deg);
+    opacity:0.6;
+  }
+  .cta-inner{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    max-width:560px;
+    margin:0 auto;
+  }
+  .cta-inner h2{
+    color:var(--paper);
+    font-size:34px;
+    margin-bottom:16px;
+  }
+  .cta-inner p{
+    color:rgba(247,243,236,0.78);
+    font-size:16px;
+    margin-bottom:36px;
+  }
+  .cta-buttons{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+  .btn-gold{
+    background:var(--gold);
+    color:var(--maroon-deep);
+    padding:15px 30px;
+    border-radius:3px;
+    font-weight:700;
+    font-size:15px;
+    transition:background 0.25s ease;
+  }
+  .btn-gold:hover{background:var(--gold-bright);}
+  .btn-ghost{
+    border:1.5px solid rgba(247,243,236,0.4);
+    color:var(--paper);
+    padding:14px 28px;
+    border-radius:3px;
+    font-weight:600;
+    font-size:15px;
+    transition:border-color 0.25s ease, background 0.25s ease;
+  }
+  .btn-ghost:hover{border-color:var(--paper); background:rgba(247,243,236,0.08);}
+
+  /* ---------- Contact ---------- */
+  .contact{background:var(--cream);}
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+  }
+  .contact-info h2{font-size:32px; margin-bottom:18px;}
+  .contact-info p{color:var(--stone); font-size:15.5px; margin-bottom:32px; max-width:420px;}
+  .contact-detail{
+    display:flex;
+    gap:16px;
+    margin-bottom:22px;
+    align-items:flex-start;
+  }
+  .contact-detail .ico{
+    width:38px;height:38px;
+    border-radius:50%;
+    background:rgba(107,21,48,0.08);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .contact-detail .label{font-size:13px; color:var(--stone); margin-bottom:2px;}
+  .contact-detail .val{font-weight:600; font-size:15px;}
+
+  form{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:38px;
+  }
+  .field{margin-bottom:20px;}
+  .field label{
+    display:block;
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:8px;
+    color:var(--ink);
+  }
+  .field input, .field textarea{
+    width:100%;
+    border:1.5px solid var(--line);
+    background:var(--cream);
+    border-radius:4px;
+    padding:12px 14px;
+    font-family:'Inter',sans-serif;
+    font-size:14.5px;
+    color:var(--ink);
+    transition:border-color 0.2s ease;
+  }
+  .field input:focus, .field textarea:focus{
+    outline:none;
+    border-color:var(--gold);
+  }
+  .field textarea{resize:vertical; min-height:90px;}
+  .submit-btn{
+    width:100%;
+    background:var(--maroon);
+    color:var(--paper);
+    padding:15px;
+    border:none;
+    border-radius:4px;
+    font-family:'Inter',sans-serif;
+    font-weight:700;
+    font-size:15px;
+    cursor:pointer;
+    transition:background 0.25s ease;
+  }
+  .submit-btn:hover{background:var(--maroon-deep);}
+
+  @media (max-width:840px){
+    .contact-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--ink);
+    color:rgba(247,243,236,0.6);
+    padding:52px 0 32px;
+  }
+  .footer-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-bottom:32px;
+    border-bottom:1px solid rgba(247,243,236,0.12);
+    margin-bottom:28px;
+    flex-wrap:wrap;
+    gap:20px;
+  }
+  .footer-brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Fraunces',serif;
+    color:var(--paper);
+    font-size:18px;
+    font-weight:600;
+  }
+  .footer-brand .mark{
+    width:10px;height:10px;
+    background:var(--gold);
+    transform:rotate(45deg);
+  }
+  footer .links{display:flex; gap:28px; flex-wrap:wrap;}
+  footer .links a{font-size:14px; transition:color 0.2s ease;}
+  footer .links a:hover{color:var(--paper);}
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    font-size:13px;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  /* ---------- Reveal animation ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.in{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand"><span class="mark"></span>Kickstart Enterprises</div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#brands">Brands</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="nav-cta">Get in Touch</a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="reveal in">
+      <div class="eyebrow"><span class="dash"></span>Distribution Partner</div>
+      <h1>Delivering goods,<br><em>seamlessly</em>, from<br>brand to shelf.</h1>
+      <p class="lead">Kickstart Enterprises connects trusted brands like Paras Ghee, Yuthika, and our body care range with the retailers and customers who rely on them — on time, every time.</p>
+      <div class="hero-ctas">
+        <a href="#brands" class="btn-primary">Explore Our Brands →</a>
+        <a href="#contact" class="btn-secondary">Become a Partner</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="num">3+</div><div class="label">Brands Distributed</div></div>
+        <div class="stat"><div class="num">100%</div><div class="label">Order Reliability</div></div>
+        <div class="stat"><div class="num">24/7</div><div class="label">Supply Support</div></div>
+      </div>
+    </div>
+    <div class="card-stage reveal in">
+      <div class="marble-bg"></div>
+      <div class="gold-vein"></div>
+      <div class="biz-card">
+        <span class="gold-corner"></span>
+        <h3>Kickstart Enterprises</h3>
+        <p>Delivering Goods. Seamlessly.</p>
+        <span class="corner-mark"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT / HOW ================= -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dash"></span>How We Work</div>
+      <h2>The link between great products and the people who need them.</h2>
+      <p>We handle the movement, stocking, and reliability so brands can focus on what they make, and retailers can focus on what they sell.</p>
+    </div>
+    <div class="flow">
+      <div class="flow-step reveal">
+        <span class="eb">Sourcing</span>
+        <h3>We partner with brands</h3>
+        <p>We work directly with quality-first brands across food, wellness, and personal care to bring their products to market.</p>
+      </div>
+      <div class="flow-step reveal">
+        <span class="eb">Logistics</span>
+        <h3>We move with precision</h3>
+        <p>Inventory, warehousing, and dispatch are managed end-to-end so stock arrives where it's needed, when it's needed.</p>
+      </div>
+      <div class="flow-step reveal">
+        <span class="eb">Delivery</span>
+        <h3>Goods reach the shelf</h3>
+        <p>Retailers and customers get consistent, dependable access to the brands they trust — without the friction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BRANDS ================= -->
+<section class="brands" id="brands">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dash"></span>Our Brands</div>
+      <h2>Three brands, one promise of quality.</h2>
+      <p>Every product we distribute is chosen for the same reason: it deserves to reach more people, reliably.</p>
+    </div>
+
+    <div class="brand-list">
+
+      <!-- Paras Ghee -->
+      <div class="brand-row reveal">
+        <div class="brand-visual" style="background:linear-gradient(155deg,#FFF8E8,#F3E2B8);">
+          <svg viewBox="0 0 200 200" fill="none">
+            <ellipse cx="100" cy="172" rx="58" ry="10" fill="#C9A227" opacity="0.18"/>
+            <path d="M62 70 H138 L132 158 Q130 172 116 172 H84 Q70 172 68 158 L62 70 Z" fill="#FBF3DD" stroke="#C9A227" stroke-width="2.5"/>
+            <path d="M70 78 H130 L126 150 Q124 162 114 162 H86 Q76 162 74 150 L70 78 Z" fill="#F4C95D"/>
+            <rect x="58" y="56" width="84" height="18" rx="4" fill="#6B1530"/>
+            <rect x="74" y="40" width="52" height="20" rx="3" fill="#6B1530"/>
+            <rect x="80" y="44" width="40" height="3" fill="#C9A227"/>
+            <circle cx="100" cy="110" r="3" fill="#C9A227"/>
+            <text x="100" y="120" text-anchor="middle" font-family="Fraunces, serif" font-weight="600" font-size="13" fill="#6B1530">PARAS</text>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <span class="tag">Food &amp; Nutrition</span>
+          <h3>Paras Ghee</h3>
+          <p>Pure, traditionally prepared ghee made for everyday cooking and wellness. Rich aroma, authentic taste, and the quality households have trusted for generations.</p>
+          <div class="pill-row">
+            <span class="pill">100% Pure</span>
+            <span class="pill">Traditional Process</span>
+            <span class="pill">Kitchen Staple</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Body Care -->
+      <div class="brand-row reveal">
+        <div class="brand-visual" style="background:linear-gradient(155deg,#EFE9DD,#DDD3C2);">
+          <svg viewBox="0 0 200 200" fill="none">
+            <ellipse cx="100" cy="178" rx="62" ry="9" fill="#6B1530" opacity="0.12"/>
+            <rect x="72" y="64" width="56" height="106" rx="14" fill="#FBF8F2" stroke="#8A8580" stroke-width="2"/>
+            <rect x="80" y="50" width="40" height="20" rx="6" fill="#6B1530"/>
+            <rect x="88" y="40" width="24" height="16" rx="4" fill="#C9A227"/>
+            <rect x="78" y="92" width="44" height="46" rx="3" fill="#6B1530" opacity="0.85"/>
+            <text x="100" y="119" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="9" fill="#F7F3EC" letter-spacing="0.5">BODY</text>
+            <text x="100" y="130" text-anchor="middle" font-family="Inter, sans-serif" font-weight="700" font-size="9" fill="#F7F3EC" letter-spacing="0.5">CARE</text>
+            <circle cx="55" cy="150" r="16" fill="#C9A227" opacity="0.25"/>
+            <circle cx="148" cy="100" r="11" fill="#6B1530" opacity="0.15"/>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <span class="tag">Personal Care</span>
+          <h3>Body Care Range</h3>
+          <p>A line of everyday body care essentials formulated for gentle, consistent results. Made for daily routines, distributed to keep shelves stocked across every season.</p>
+          <div class="pill-row">
+            <span class="pill">Gentle Formulas</span>
+            <span class="pill">Daily Care</span>
+            <span class="pill">Wide Availability</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Yuthika -->
+      <div class="brand-row reveal">
+        <div class="brand-visual" style="background:linear-gradient(155deg,#F3E7E0,#E3CFC4);">
+          <svg viewBox="0 0 200 200" fill="none">
+            <ellipse cx="100" cy="176" rx="60" ry="9" fill="#6B1530" opacity="0.12"/>
+            <path d="M88 60 C88 60 70 90 70 120 C70 148 86 168 100 168 C114 168 130 148 130 120 C130 90 112 60 112 60" fill="#FBF8F2" stroke="#6B1530" stroke-width="2.2"/>
+            <path d="M100 70 C100 70 92 95 92 118 C92 140 100 152 100 152" stroke="#C9A227" stroke-width="2" fill="none" opacity="0.7"/>
+            <circle cx="100" cy="48" r="10" fill="#C9A227"/>
+            <path d="M100 38 C104 30 112 28 116 32" stroke="#C9A227" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <text x="100" y="124" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-weight="500" font-size="14" fill="#6B1530">Yuthika</text>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <span class="tag">Wellness</span>
+          <h3>Yuthika</h3>
+          <p>A wellness-focused brand built around natural ingredients and simple, honest formulations. Distributed with care so quality stays consistent from batch to buyer.</p>
+          <div class="pill-row">
+            <span class="pill">Natural Ingredients</span>
+            <span class="pill">Wellness Focused</span>
+            <span class="pill">Consistent Quality</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY US ================= -->
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dash"></span>Why Partner With Us</div>
+      <h2>Built for reliability, not just delivery.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item reveal">
+        <svg class="icon" viewBox="0 0 46 46" fill="none"><rect x="2" y="2" width="42" height="42" rx="6" stroke="#6B1530" stroke-width="2"/><path d="M14 23 L20 29 L32 16" stroke="#C9A227" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Dependable Supply</h3>
+        <p>Consistent stock availability so retailers never face empty shelves or missed seasons.</p>
+      </div>
+      <div class="why-item reveal">
+        <svg class="icon" viewBox="0 0 46 46" fill="none"><circle cx="23" cy="23" r="20" stroke="#6B1530" stroke-width="2"/><path d="M23 12 V23 L31 28" stroke="#C9A227" stroke-width="3" stroke-linecap="round"/></svg>
+        <h3>On-Time Delivery</h3>
+        <p>Routes and schedules designed around your business hours, not ours.</p>
+      </div>
+      <div class="why-item reveal">
+        <svg class="icon" viewBox="0 0 46 46" fill="none"><path d="M23 4 L40 12 V24 C40 34 32 40 23 42 C14 40 6 34 6 24 V12 Z" stroke="#6B1530" stroke-width="2"/><path d="M16 22 L23 29 L31 18" stroke="#C9A227" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Quality Assurance</h3>
+        <p>Every brand we carry is vetted and handled to preserve the quality it left the factory with.</p>
+      </div>
+      <div class="why-item reveal">
+        <svg class="icon" viewBox="0 0 46 46" fill="none"><path d="M6 36 V14 L23 4 L40 14 V36" stroke="#6B1530" stroke-width="2"/><path d="M16 36 V24 H30 V36" stroke="#C9A227" stroke-width="2.5"/></svg>
+        <h3>Local Reach</h3>
+        <p>Deep distribution relationships that get products into the right stores, in the right hands.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA BAND ================= -->
+<section class="cta-band">
+  <div class="wrap">
+    <div class="cta-inner reveal">
+      <h2>Let's keep your shelves stocked.</h2>
+      <p>Whether you're a retailer looking to stock Paras Ghee, Yuthika, or our body care range — or a brand looking for a distribution partner — we'd love to talk.</p>
+      <div class="cta-buttons">
+        <a href="#contact" class="btn-gold">Start a Conversation</a>
+        <a href="#brands" class="btn-ghost">View Our Brands</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info reveal">
+      <h2>Get in touch</h2>
+      <p>Reach out for distribution inquiries, bulk orders, or to become a stocking partner for our brands.</p>
+
+      <div class="contact-detail">
+        <div class="ico">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 5 C3 4 4 3 5 3 H8 L10 8 L7.5 9.5 C8.5 12 11.5 15 14 16 L15.5 13.5 L20.5 15.5 V19 C20.5 20 19.5 21 18.5 21 C10 21 3 14 3 5 Z" stroke="#6B1530" stroke-width="1.7"/></svg>
+        </div>
+        <div><div class="label">Call us</div><div class="val">+91 XXXXX XXXXX</div></div>
+      </div>
+      <div class="contact-detail">
+        <div class="ico">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#6B1530" stroke-width="1.7"/><path d="M4 7 L12 13 L20 7" stroke="#6B1530" stroke-width="1.7"/></svg>
+        </div>
+        <div><div class="label">Email us</div><div class="val">hello@kickstartenterprises.com</div></div>
+      </div>
+      <div class="contact-detail">
+        <div class="ico">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 21 C12 21 19 14.5 19 9.5 C19 5.5 15.9 3 12 3 C8.1 3 5 5.5 5 9.5 C5 14.5 12 21 12 21 Z" stroke="#6B1530" stroke-width="1.7"/><circle cx="12" cy="9.5" r="2.5" stroke="#6B1530" stroke-width="1.7"/></svg>
+        </div>
+        <div><div class="label">Visit us</div><div class="val">Your City, Uttar Pradesh, India</div></div>
+      </div>
+    </div>
+
+    <form class="reveal" onsubmit="event.preventDefault(); document.getElementById('formNote').style.display='block'; this.reset();">
+      <div class="field">
+        <label for="name">Full name</label>
+        <input id="name" type="text" placeholder="Your name" required>
+      </div>
+      <div class="field">
+        <label for="email">Email address</label>
+        <input id="email" type="email" placeholder="you@business.com" required>
+      </div>
+      <div class="field">
+        <label for="interest">I'm interested in</label>
+        <input id="interest" type="text" placeholder="e.g. Stocking Paras Ghee">
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Tell us a bit about your inquiry" required></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Send Message</button>
+      <p id="formNote" style="display:none; margin-top:14px; font-size:13.5px; color:#6B1530; text-align:center;">Thanks — your message has been noted. We'll get back to you soon.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand"><span class="mark"></span>Kickstart Enterprises</div>
+      <div class="links">
+        <a href="#about">About</a>
+        <a href="#brands">Brands</a>
+        <a href="#why">Why Us</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Kickstart Enterprises. All rights reserved.</span>
+      <span>Delivering Goods. Seamlessly.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); }
+    });
+  },{threshold:0.12});
+  reveals.forEach(r=>obs.observe(r));
+</script>
+
+</body>
+</html>
